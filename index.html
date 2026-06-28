@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th" class="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,22 +30,76 @@ tailwind.config = {
 </script>
 <style>
   /* ===== THEME PALETTES (accent) ===== */
-  :root,[data-theme="amber"]{ --b50:255 251 235;--b100:254 243 199;--b200:253 230 138;--b300:252 211 77;--b400:251 191 36;--b500:245 158 11;--b600:217 119 6;--b700:180 83 9;--b800:146 64 14;--b900:120 53 15; --accent:#d97706;}
-  [data-theme="emerald"]{ --b50:236 253 245;--b100:209 250 229;--b200:167 243 208;--b300:110 231 183;--b400:52 211 153;--b500:16 185 129;--b600:5 150 105;--b700:4 120 87;--b800:6 95 70;--b900:6 78 59; --accent:#059669;}
-  [data-theme="blue"]{ --b50:239 246 255;--b100:219 234 254;--b200:191 219 254;--b300:147 197 253;--b400:96 165 250;--b500:59 130 246;--b600:37 99 235;--b700:29 78 216;--b800:30 64 175;--b900:30 58 138; --accent:#2563eb;}
-  [data-theme="teal"]{ --b50:240 253 250;--b100:204 251 241;--b200:153 246 228;--b300:94 234 212;--b400:45 212 191;--b500:20 184 166;--b600:13 148 136;--b700:15 118 110;--b800:17 94 89;--b900:19 78 74; --accent:#0d9488;}
-  [data-theme="rose"]{ --b50:255 241 242;--b100:255 228 230;--b200:254 205 211;--b300:253 164 175;--b400:251 113 133;--b500:244 63 94;--b600:225 29 72;--b700:190 18 60;--b800:159 18 57;--b900:136 19 55; --accent:#e11d48;}
-  [data-theme="violet"]{ --b50:245 243 255;--b100:237 233 254;--b200:221 214 254;--b300:196 181 253;--b400:167 139 250;--b500:139 92 246;--b600:124 58 237;--b700:109 40 217;--b800:91 33 182;--b900:76 29 149; --accent:#7c3aed;}
+  :root,[data-theme="amber"]{ --b50:255 244 235;--b100:255 228 204;--b200:255 199 153;--b300:245 166 107;--b400:224 130 66;--b500:196 93 41;--b600:163 70 26;--b700:128 52 18;--b800:92 36 12;--b900:58 22 8; --accent:#b8632f;}
+  [data-theme="emerald"]{ --b50:230 253 246;--b100:194 250 226;--b200:138 240 196;--b300:79 219 165;--b400:36 191 138;--b500:13 158 112;--b600:7 128 89;--b700:6 100 70;--b800:8 76 54;--b900:9 58 42; --accent:#0d9e70;}
+  [data-theme="blue"]{ --b50:230 242 255;--b100:194 224 255;--b200:138 192 255;--b300:90 154 247;--b400:56 119 224;--b500:33 87 189;--b600:24 67 150;--b700:19 52 117;--b800:14 38 86;--b900:10 26 58; --accent:#2157bd;}
+  [data-theme="teal"]{ --b50:225 253 250;--b100:181 247 238;--b200:118 233 219;--b300:62 206 191;--b400:31 171 157;--b500:18 138 128;--b600:13 110 103;--b700:11 86 81;--b800:9 64 61;--b900:8 46 44; --accent:#128a80;}
+  [data-theme="rose"]{ --b50:255 232 238;--b100:255 200 215;--b200:255 150 175;--b300:240 96 130;--b400:212 56 95;--b500:175 33 70;--b600:140 26 56;--b700:107 21 45;--b800:76 16 33;--b900:50 12 23; --accent:#af2146;}
+  [data-theme="violet"]{ --b50:240 234 255;--b100:222 204 255;--b200:189 153 250;--b300:152 107 235;--b400:118 75 209;--b500:88 53 173;--b600:69 41 138;--b700:53 32 107;--b800:38 23 78;--b900:25 15 52; --accent:#583dad;}
 
-  html{font-family:'IBM Plex Sans Thai','Inter',sans-serif;background:#fffdf7;scroll-behavior:smooth}
+  html{font-family:'IBM Plex Sans Thai','Inter',sans-serif;background:#08070a;scroll-behavior:smooth}
   body,button,a,input,select,textarea,[class*="bg-"],[class*="text-"],[class*="ring-"],[class*="border-"]{transition:background-color .35s ease,color .35s ease,border-color .35s ease,box-shadow .25s ease,transform .18s ease}
   ::-webkit-scrollbar{height:9px;width:9px}
-  ::-webkit-scrollbar-thumb{background:#fcd34d;border-radius:9px}
-  ::-webkit-scrollbar-thumb:hover{background:#f59e0b}
+  ::-webkit-scrollbar-thumb{background:rgb(var(--b500));border-radius:9px}
+  ::-webkit-scrollbar-thumb:hover{background:rgb(var(--b600))}
   .num{font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums}
   [data-modal]{animation:pop .26s cubic-bezier(.2,.9,.3,1.15)}
   @keyframes pop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
   @keyframes fade{from{opacity:0}to{opacity:1}}
+
+  /* ===== noise/grain texture overlay (พรีเมียมฟิล์ม) ===== */
+  body::before{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.025;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* ===== cursor glow (desktop) ===== */
+  #cursorGlow{position:fixed;top:0;left:0;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgb(var(--b500) / .14),transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:opacity .3s;will-change:transform}
+
+  /* ============================================================
+     ===================== HERO: OBSIDIAN SOLAR ===================
+     ============================================================ */
+  #top{background:radial-gradient(ellipse 80% 60% at 75% 0%, rgb(var(--b900) / .35), transparent 60%), #08070a}
+  .energy-orb-wrap{position:absolute;width:560px;height:560px;pointer-events:none;z-index:0}
+  .energy-orb-core{position:absolute;inset:36%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe2b8,rgb(var(--b400)) 35%,rgb(var(--b700)) 72%,transparent 100%);filter:blur(1px);animation:orbPulse 5s ease-in-out infinite;box-shadow:0 0 110px 24px rgb(var(--b500) / .45),0 0 220px 70px rgb(var(--b700) / .22)}
+  .energy-orb-ring{position:absolute;border-radius:50%;border:1px solid rgb(var(--b400) / .22)}
+  .energy-orb-ring.r1{inset:22%;animation:orbRotate 34s linear infinite}
+  .energy-orb-ring.r2{inset:9%;animation:orbRotate 48s linear infinite reverse;border-style:dashed;border-color:rgb(var(--b400) / .14)}
+  .energy-orb-ring.r3{inset:0;animation:orbRotate 64s linear infinite;border-color:rgb(var(--b400) / .09)}
+  @keyframes orbPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+  @keyframes orbRotate{to{transform:rotate(360deg)}}
+
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);color:rgb(var(--b300));font-size:12px;font-weight:600;padding:7px 16px;border-radius:9999px}
+  .hero-headline{font-size:clamp(2.4rem,5.2vw,3.6rem);font-weight:800;color:#fff;line-height:1.12;letter-spacing:-.01em}
+  .hero-headline-accent{background:linear-gradient(100deg,rgb(var(--b300)),rgb(var(--b400)) 40%,#ffd98a 65%,rgb(var(--b400)));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:heroGradFlow 6s linear infinite}
+  @keyframes heroGradFlow{to{background-position:200% center}}
+  .hero-stat-num{color:#fff;background:linear-gradient(120deg,#fff,rgb(var(--b300)));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+  .pbtn-hero-primary{padding:14px 26px;border-radius:13px;font-weight:700;font-size:15px;color:#1a1108;background:linear-gradient(120deg,rgb(var(--b300)),rgb(var(--b500)));box-shadow:0 10px 30px -8px rgb(var(--b500) / .55);transition:transform .2s,box-shadow .2s;cursor:pointer;border:none;display:inline-flex;align-items:center}
+  .pbtn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 14px 36px -8px rgb(var(--b500) / .7)}
+  .pbtn-hero-primary:active{transform:translateY(0) scale(.98)}
+  .pbtn-hero-ghost{padding:14px 26px;border-radius:13px;font-weight:600;font-size:15px;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);transition:all .2s;display:inline-flex;align-items:center}
+  .pbtn-hero-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25)}
+
+  .hero-glass-frame{position:relative;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.04) inset}
+  .hero-glass-frame-sheen{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 50%)}
+  .hero-float-badge{position:absolute;bottom:-22px;left:-22px;background:rgba(18,16,14,.75);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);border-radius:16px;box-shadow:0 20px 40px -12px rgba(0,0,0,.6);padding:14px 16px;display:flex;align-items:center;gap:12px;max-width:230px}
+  .hero-float-badge-icon{width:42px;height:42px;border-radius:11px;background:rgb(var(--b500) / .18);color:rgb(var(--b300));display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+
+  /* ============================================================
+     ================ SECTION HEADERS (พรีเมียม) ===================
+     ============================================================ */
+  .section-eyebrow{color:rgb(var(--b400));font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.12em}
+  .section-headline{font-size:clamp(1.9rem,3.6vw,2.6rem);font-weight:800;color:#fff;letter-spacing:-.01em;line-height:1.2}
+
+  /* ============================================================
+     ===================== BENTO SERVICE CARDS =====================
+     ============================================================ */
+  .bento-card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:28px 26px;backdrop-filter:blur(6px);transition:transform .3s cubic-bezier(.2,.8,.3,1),border-color .3s,background .3s;display:flex;flex-direction:column}
+  .bento-card:hover{transform:translateY(-6px);border-color:rgb(var(--b400) / .4);background:rgba(255,255,255,.055)}
+  .bento-card-featured{background:linear-gradient(155deg,rgba(255,255,255,.06),rgb(var(--b900) / .3));border-color:rgb(var(--b400) / .35);justify-content:center}
+  .best-ribbon-dark{position:absolute;top:16px;right:16px;background:linear-gradient(120deg,rgb(var(--b300)),rgb(var(--b500)));color:#1a1108;font-size:11px;font-weight:700;padding:5px 12px;border-radius:9999px;z-index:2;box-shadow:0 4px 14px -2px rgb(var(--b500) / .5)}
+
+  .cta-panel{text-align:center;border-radius:28px;padding:60px 40px;background:linear-gradient(155deg,rgba(255,255,255,.05),rgb(var(--b900) / .35));border:1px solid rgb(var(--b400) / .25);box-shadow:0 0 80px -20px rgb(var(--b600) / .3)}
+  .footer-link{transition:color .2s}
+  .footer-link:hover{color:rgb(var(--b400))}
 
   /* ===== ENTRANCE ANIMATIONS ===== */
   .fade-in{animation:fadeUp .5s cubic-bezier(.2,.7,.3,1) both}
@@ -303,7 +357,7 @@ tailwind.config = {
   @keyframes logoBob{0%,100%{transform:rotate(0)}50%{transform:rotate(-6deg)}}
 
   /* ---- hero grid pattern ---- */
-  .hero-grid-pattern{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(245,158,11,.18) 1px,transparent 1px);background-size:26px 26px;mask-image:radial-gradient(ellipse 70% 60% at 50% 0%, black, transparent);pointer-events:none}
+  .hero-grid-pattern{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.1) 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(ellipse 70% 60% at 50% 0%, black, transparent);pointer-events:none}
 
   /* ---- modal entrance v2 ---- */
   [data-modal]{animation:modalIn .38s cubic-bezier(.2,.85,.25,1.12)}
@@ -329,7 +383,7 @@ tailwind.config = {
   .trust-grid-pattern{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:42px 42px;mask-image:radial-gradient(ellipse 65% 55% at 50% 25%, black, transparent);pointer-events:none}
 
   .trust-headline{font-size:clamp(2.1rem,5.2vw,3.6rem);font-weight:800;color:#fff;line-height:1.15;letter-spacing:-.01em}
-  .trust-headline-accent{display:block;background:linear-gradient(100deg,#fbbf24,#fde68a,#f59e0b,#fbbf24);background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradFlow 4s linear infinite;text-shadow:0 0 50px rgba(245,158,11,.3)}
+  .trust-headline-accent{display:block;background:linear-gradient(100deg,rgb(var(--b300)),#ffd98a,rgb(var(--b500)),rgb(var(--b300)));background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradFlow 4s linear infinite;text-shadow:0 0 50px rgb(var(--b500) / .3)}
 
   .trust-portrait-wrap{position:relative;width:168px;height:168px;margin:42px auto 0}
   .trust-portrait-wrap::before{content:"";position:absolute;inset:-20px;border-radius:50%;background:radial-gradient(circle,rgba(245,158,11,.4),transparent 70%);animation:haloPulse 2.6s ease-in-out infinite;z-index:-1}
@@ -355,7 +409,7 @@ tailwind.config = {
   .trust-badge-icon{font-size:27px;margin-bottom:6px}
 
   .strength-card{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:26px 22px;backdrop-filter:blur(6px);transition:transform .25s cubic-bezier(.2,.8,.3,1),border-color .25s,background .25s}
-  .strength-card:hover{transform:translateY(-5px);border-color:rgba(245,158,11,.45);background:rgba(255,255,255,.07)}
+  .strength-card:hover{transform:translateY(-5px);border-color:rgb(var(--b400) / .45);background:rgba(255,255,255,.07)}
   .strength-icon{font-size:34px}
 
   .trust-twinkle{position:absolute;border-radius:50%;background:#fde68a;animation:bgTwinkle ease-in-out infinite}
@@ -479,7 +533,7 @@ tailwind.config = {
   html.dark .admin-tab:hover{color:#cbd5e1}
 
   .portfolio-tile{transition:box-shadow .3s ease,transform .3s ease}
-  .portfolio-tile:hover{box-shadow:0 0 0 3px rgba(245,158,11,.6),0 16px 30px -10px rgba(0,0,0,.5)}
+  .portfolio-tile:hover{box-shadow:0 0 0 3px rgb(var(--b500) / .6),0 16px 30px -10px rgba(0,0,0,.5)}
 
   .warranty-mini-grid > div:hover img{transform:scale(1.08)}
   .warranty-mini-grid > div::after{content:"🛡️ รับประกัน";position:absolute;bottom:6px;left:6px;background:rgba(5,150,105,.9);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:9999px}
@@ -509,7 +563,7 @@ tailwind.config = {
   html.dark .bg-ink-100{background-color:#222a3d !important}
 
   html.dark .hero-grid-pattern,html.dark .warranty-bg-pattern,html.dark .trust-grid-pattern{background-image:radial-gradient(circle,rgba(255,255,255,.07) 1px,transparent 1px)}
-  html.dark .warranty-section{background:radial-gradient(ellipse 70% 50% at 80% 0%, rgba(16,185,129,.14), transparent 60%), radial-gradient(ellipse 60% 50% at 10% 100%, rgba(245,158,11,.14), transparent 60%), #0a0d15}
+  html.dark .warranty-section{background:radial-gradient(ellipse 70% 50% at 80% 0%, rgb(var(--b600) / .18), transparent 60%), radial-gradient(ellipse 60% 50% at 10% 100%, rgb(var(--b500) / .14), transparent 60%), #08070a}
 
   html.dark input,html.dark select,html.dark textarea{background-color:#161b29 !important;color:#e2e8f0;border-color:#2b3450}
   html.dark input::placeholder,html.dark textarea::placeholder{color:#5d6a85}
@@ -532,7 +586,7 @@ tailwind.config = {
   html.dark .step .lbl{color:#76829c}
   html.dark .step.done .lbl,html.dark .step.current .lbl{color:#e7ebf3}
 
-  html.dark .warranty-cert{background:linear-gradient(165deg,#181c2c,#15182a 45%,#12141f);border-color:rgba(245,158,11,.25)}
+  html.dark .warranty-cert{background:linear-gradient(165deg,#181410,#15110d 45%,#100d0a);border-color:rgb(var(--b400) / .28)}
   html.dark .warranty-cert::before{border-color:rgba(217,119,6,.32)}
   html.dark .cert-company{color:#f3f6fb}
   html.dark .cert-customer-name{color:#f3f6fb}
@@ -571,11 +625,11 @@ tailwind.config = {
 
 <!-- ===================== NAV ===================== -->
 <nav id="siteNav">
-  <div id="navProgress" style="position:absolute;bottom:-2px;left:0;height:2px;width:0%;background:linear-gradient(90deg,#fbbf24,#f59e0b,#10b981);transition:width .08s linear"></div>
+  <div id="navProgress" style="position:absolute;bottom:-2px;left:0;height:2px;width:0%;background:linear-gradient(90deg,rgb(var(--b300)),rgb(var(--b500)));transition:width .08s linear"></div>
   <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
     <a href="#top" class="flex items-center gap-2.5">
-      <div id="navLogoIcon" class="w-9 h-9 rounded-xl bg-gradient-to-br from-sun-400 to-brand-600 flex items-center justify-center text-white text-lg font-bold shadow-lg shadow-amber-500/30 overflow-hidden">☀</div>
-      <span class="font-bold text-lg text-ink-900 tracking-tight">KV<span class="text-amber-600">Solar</span></span>
+      <div id="navLogoIcon" class="w-9 h-9 rounded-xl flex items-center justify-center text-white text-lg font-bold overflow-hidden" style="background:linear-gradient(135deg,rgb(var(--b400)),rgb(var(--b700)));box-shadow:0 6px 18px -4px rgb(var(--b500) / .4)">☀</div>
+      <span class="font-bold text-lg text-ink-900 tracking-tight">KV<span style="color:rgb(var(--b400))">Solar</span></span>
     </a>
     <div class="hidden md:flex items-center gap-7">
       <a href="#services" class="nav-link">บริการ</a>
@@ -594,58 +648,47 @@ tailwind.config = {
   <!-- HERO -->
   <section id="top" class="relative overflow-hidden">
     <div class="hero-grid-pattern"></div>
-    <div class="sun-glow w-[420px] h-[420px] bg-amber-300/40 -top-32 -left-24"></div>
-    <div class="sun-glow w-[360px] h-[360px] bg-emerald-300/30 top-20 right-0" style="animation-delay:3s"></div>
-    <div class="sun-glow w-[260px] h-[260px] bg-blue-300/25 bottom-0 left-1/3" style="animation-delay:6s"></div>
-
-    <!-- animated sun -->
-    <div class="hero-sun-wrap hidden sm:block" style="top:-40px;right:6%;width:160px;height:160px">
-      <svg viewBox="0 0 160 160" width="160" height="160">
-        <g class="hero-sun-rays" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" opacity=".55">
-          <g>
-            <line x1="80" y1="6" x2="80" y2="26"/><line x1="80" y1="134" x2="80" y2="154"/>
-            <line x1="6" y1="80" x2="26" y2="80"/><line x1="134" y1="80" x2="154" y2="80"/>
-            <line x1="27" y1="27" x2="41" y2="41"/><line x1="119" y1="119" x2="133" y2="133"/>
-            <line x1="133" y1="27" x2="119" y2="41"/><line x1="41" y1="119" x2="27" y2="133"/>
-          </g>
-        </g>
-        <circle class="hero-sun-core" cx="80" cy="80" r="34" fill="#fbbf24"/>
-      </svg>
+    <div class="energy-orb-wrap" style="top:-160px;right:-120px">
+      <div class="energy-orb-ring r1"></div>
+      <div class="energy-orb-ring r2"></div>
+      <div class="energy-orb-ring r3"></div>
+      <div class="energy-orb-core"></div>
     </div>
     <div id="heroParticles" class="absolute inset-0 overflow-hidden"></div>
 
-    <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-16 pb-20 relative z-10">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-20 pb-24 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
         <div class="fade-in">
-          <span class="inline-flex items-center gap-2 bg-amber-100 text-amber-700 text-xs font-semibold px-3.5 py-1.5 rounded-full">
-            <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span> รับงานโซลาร์เซลล์ทั่วประเทศ
+          <span class="hero-eyebrow">
+            <span class="w-1.5 h-1.5 rounded-full" style="background:rgb(var(--b400))"></span> รับงานโซลาร์เซลล์ทั่วประเทศ
           </span>
-          <h1 class="text-4xl sm:text-5xl font-extrabold text-ink-900 mt-5 leading-tight tracking-tight">
+          <h1 class="hero-headline mt-7">
             ติดตั้งโซลาร์เซลล์<br>
-            <span class="grad-text-anim bg-gradient-to-r from-amber-500 via-orange-500 to-brand-600 bg-clip-text text-transparent">ครบวงจร ติดตามได้ทุกขั้นตอน</span>
+            <span class="hero-headline-accent">ครบวงจร ระดับพรีเมียม</span>
           </h1>
-          <p class="text-ink-500 text-base sm:text-lg mt-5 leading-relaxed max-w-lg">
+          <p class="text-white/55 text-base sm:text-lg mt-6 leading-relaxed max-w-lg font-light">
             ตั้งแต่จัดหาผู้รับเหมา เขียนแบบ ไปจนถึงควบคุมงานติดตั้ง — ดูสถานะงานของคุณได้ตลอดเวลา พร้อมรับประกันผลงานสูงสุด 10 ปี
           </p>
-          <div class="flex flex-wrap gap-3 mt-8">
-            <button onclick="openLogin()" class="pbtn pbtn-primary pbtn-glow !px-6 !py-3.5 !text-[15px] shadow-lg shadow-amber-500/20">ดูสถานะงานของฉัน</button>
-            <a href="#services" class="pbtn pbtn-ghost !px-6 !py-3.5 !text-[15px]">ดูบริการทั้งหมด ↓</a>
+          <div class="flex flex-wrap gap-3 mt-9">
+            <button onclick="openLogin()" class="pbtn-hero-primary">ดูสถานะงานของฉัน</button>
+            <a href="#services" class="pbtn-hero-ghost">ดูบริการทั้งหมด ↓</a>
           </div>
-          <div class="flex items-center gap-6 mt-9 text-sm">
-            <div><div class="num text-2xl font-bold text-ink-900" id="statJobsDone" data-target="0">0</div><div class="text-ink-400 text-xs mt-0.5">งานที่ส่งมอบแล้ว</div></div>
-            <div class="w-px h-9 bg-ink-200"></div>
-            <div><div class="num text-2xl font-bold text-ink-900">1-10 ปี</div><div class="text-ink-400 text-xs mt-0.5">รับประกันผลงาน</div></div>
-            <div class="w-px h-9 bg-ink-200"></div>
-            <div><div class="num text-2xl font-bold text-ink-900">100%</div><div class="text-ink-400 text-xs mt-0.5">ติดตามสถานะออนไลน์</div></div>
+          <div class="flex items-center gap-7 mt-11 text-sm">
+            <div><div class="num text-3xl font-bold hero-stat-num" id="statJobsDone" data-target="0">0</div><div class="text-white/35 text-xs mt-1 tracking-wide">งานที่ส่งมอบแล้ว</div></div>
+            <div class="w-px h-10" style="background:rgba(255,255,255,.1)"></div>
+            <div><div class="num text-3xl font-bold hero-stat-num">1-10 <span class="text-lg">ปี</span></div><div class="text-white/35 text-xs mt-1 tracking-wide">รับประกันผลงาน</div></div>
+            <div class="w-px h-10" style="background:rgba(255,255,255,.1)"></div>
+            <div><div class="num text-3xl font-bold hero-stat-num">100%</div><div class="text-white/35 text-xs mt-1 tracking-wide">ติดตามออนไลน์</div></div>
           </div>
         </div>
         <div class="relative fade-in" id="heroImgWrap" style="animation-delay:.15s">
-          <div class="rounded-3xl overflow-hidden shadow-2xl shadow-amber-900/10 border border-amber-100/60 tilt" id="heroImgCard">
+          <div class="hero-glass-frame tilt" id="heroImgCard">
             <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1200&auto=format&fit=crop" class="w-full h-80 sm:h-96 object-cover" alt="แผงโซลาร์เซลล์บนหลังคา">
+            <div class="hero-glass-frame-sheen"></div>
           </div>
-          <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 border border-ink-100 max-w-[230px] fade-in" style="animation-delay:.5s">
-            <div class="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl flex-shrink-0 wiggle-on-hover">✓</div>
-            <div class="text-sm"><div class="font-semibold text-ink-900">ส่งมอบงานแล้ว</div><div class="text-ink-400 text-xs">รับประกันเริ่มทันที</div></div>
+          <div class="hero-float-badge fade-in" style="animation-delay:.5s">
+            <div class="hero-float-badge-icon">✓</div>
+            <div class="text-sm"><div class="font-semibold text-white">ส่งมอบงานแล้ว</div><div class="text-white/40 text-xs">รับประกันเริ่มทันที</div></div>
           </div>
         </div>
       </div>
@@ -653,32 +696,32 @@ tailwind.config = {
   </section>
 
   <!-- SERVICES -->
-  <section id="services" class="max-w-6xl mx-auto px-5 sm:px-8 py-20 relative overflow-hidden">
-    <div class="sun-glow w-[300px] h-[300px] bg-amber-200/35 top-10 -right-10" style="animation-delay:1.5s"></div>
-    <div class="text-center max-w-xl mx-auto mb-12 reveal relative z-10">
-      <span class="text-amber-600 font-semibold text-sm uppercase tracking-wider">บริการของเรา</span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-ink-900 mt-3">เลือกบริการที่ตรงกับความต้องการ</h2>
-      <p class="text-ink-500 mt-3">เลือกได้มากกว่า 1 บริการ ระบบจะรวมราคาให้อัตโนมัติ</p>
+  <section id="services" class="max-w-6xl mx-auto px-5 sm:px-8 py-24 relative overflow-hidden">
+    <div class="text-center max-w-xl mx-auto mb-14 reveal relative z-10">
+      <span class="section-eyebrow">บริการของเรา</span>
+      <h2 class="section-headline mt-4">เลือกบริการที่ตรงกับความต้องการ</h2>
+      <p class="text-white/45 mt-4 font-light">เลือกได้มากกว่า 1 บริการ ระบบจะรวมราคาให้อัตโนมัติ</p>
     </div>
-    <div id="serviceCards" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger relative z-10"></div>
+    <div id="serviceCards" class="grid sm:grid-cols-2 lg:grid-cols-3 lg:[grid-auto-flow:dense] gap-5 reveal-stagger relative z-10"></div>
   </section>
 
   <!-- ===================== FOUNDER / TRUST SHOWCASE ===================== -->
   <section id="trust" class="trust-section relative overflow-hidden py-24">
     <!-- decorative layers -->
     <div class="trust-grid-pattern"></div>
-    <div class="sun-glow w-[460px] h-[460px] bg-amber-500/25 -top-32 -left-20"></div>
-    <div class="sun-glow w-[380px] h-[380px] bg-emerald-500/15 bottom-0 right-0" style="animation-delay:2.4s"></div>
+    <div class="energy-orb-wrap" style="opacity:.5;top:-200px;left:-180px;width:420px;height:420px">
+      <div class="energy-orb-ring r1"></div><div class="energy-orb-ring r2"></div><div class="energy-orb-core"></div>
+    </div>
     <div id="trustSparkles" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
 
     <div class="max-w-5xl mx-auto px-5 sm:px-8 relative z-10 text-center">
 
-      <span class="inline-flex items-center gap-2 bg-white/8 border border-amber-400/30 text-amber-300 text-xs font-semibold px-4 py-1.5 rounded-full reveal backdrop-blur-sm">
-        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span> ทำไมต้องเลือกเรา
+      <span class="hero-eyebrow reveal">
+        <span class="w-1.5 h-1.5 rounded-full" style="background:rgb(var(--b400))"></span> ทำไมต้องเลือกเรา
       </span>
 
       <h2 class="trust-headline reveal mt-6">จุดเด่น<span class="trust-headline-accent">ที่ลูกค้าวางใจ</span></h2>
-      <p class="text-ink-300 text-sm sm:text-base mt-4 max-w-xl mx-auto reveal" style="transition-delay:.08s">
+      <p class="text-white/45 text-sm sm:text-base mt-4 max-w-xl mx-auto reveal font-light" style="transition-delay:.08s">
         บริษัท เควี โซล่าร์ อิเล็คทริค ใส่ใจทุกรายละเอียด ตั้งแต่เลือกสินค้าจนถึงส่งมอบงาน
       </p>
 
@@ -725,17 +768,18 @@ tailwind.config = {
 
   <!-- PORTFOLIO -->
 
-  <section id="portfolio" class="bg-ink-900 py-20 relative overflow-hidden">
-    <div class="sun-glow w-[400px] h-[400px] bg-amber-500/15 top-0 left-1/3"></div>
-    <div class="sun-glow w-[280px] h-[280px] bg-emerald-500/12 bottom-0 right-10" style="animation-delay:4s"></div>
+  <section id="portfolio" class="py-24 relative overflow-hidden" style="background:#08070a">
+    <div class="energy-orb-wrap" style="opacity:.4;top:-60px;left:30%;width:380px;height:380px">
+      <div class="energy-orb-ring r1"></div><div class="energy-orb-core"></div>
+    </div>
     <div class="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
-      <div class="text-center max-w-xl mx-auto mb-12 reveal">
-        <span class="text-amber-400 font-semibold text-sm uppercase tracking-wider">ผลงานของเรา</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">งานที่ติดตั้งและส่งมอบแล้ว</h2>
-        <p class="text-ink-300 mt-3">ภาพจริงจากหน้างานที่ลูกค้าไว้วางใจ</p>
+      <div class="text-center max-w-xl mx-auto mb-14 reveal">
+        <span class="section-eyebrow">ผลงานของเรา</span>
+        <h2 class="section-headline mt-4">งานที่ติดตั้งและส่งมอบแล้ว</h2>
+        <p class="text-white/45 mt-4 font-light">ภาพจริงจากหน้างานที่ลูกค้าไว้วางใจ</p>
       </div>
       <div id="portfolioGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 reveal-stagger"></div>
-      <div id="portfolioEmpty" class="hidden text-center text-ink-400 py-10">ยังไม่มีผลงานที่เผยแพร่ในขณะนี้</div>
+      <div id="portfolioEmpty" class="hidden text-center text-white/35 py-10">ยังไม่มีผลงานที่เผยแพร่ในขณะนี้</div>
     </div>
   </section>
 
@@ -746,9 +790,9 @@ tailwind.config = {
     <div class="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
 
       <div class="text-center max-w-2xl mx-auto mb-14 reveal">
-        <span class="text-amber-600 font-semibold text-sm uppercase tracking-wider">ความมั่นใจระดับสูงสุด</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-ink-900 mt-3">รับประกันผลงาน 1-10 ปี</h2>
-        <p class="text-ink-500 mt-4 leading-relaxed">
+        <span class="section-eyebrow">ความมั่นใจระดับสูงสุด</span>
+        <h2 class="section-headline mt-4">รับประกันผลงาน 1-10 ปี</h2>
+        <p class="text-white/45 mt-4 leading-relaxed font-light">
           ทุกงานที่ส่งมอบเรียบร้อยจะเริ่มนับระยะประกันทันที — ลองเลื่อนดูตัวอย่างใบรับประกันด้านล่าง
           เพื่อดูว่าระยะเวลาที่ต่างกันจะให้ความคุ้มครองคุณนานแค่ไหน
         </p>
@@ -798,31 +842,32 @@ tailwind.config = {
   </section>
 
   <!-- CTA -->
-  <section class="max-w-6xl mx-auto px-5 sm:px-8 pb-20">
-    <div class="rounded-3xl bg-gradient-to-br from-amber-500 via-orange-500 to-brand-700 p-10 sm:p-14 text-center relative overflow-hidden sheen reveal">
-      <i class="cert-glow-blob" style="width:200px;height:200px;background:#fff;top:-60px;left:-40px;opacity:.15;animation-duration:8s"></i>
-      <i class="cert-glow-blob" style="width:160px;height:160px;background:#10b981;bottom:-50px;right:-30px;opacity:.25;animation-duration:10s"></i>
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-white relative z-10">พร้อมเริ่มต้นโครงการโซลาร์เซลล์ของคุณ?</h2>
-      <p class="text-white/85 mt-3 max-w-md mx-auto relative z-10">เข้าสู่ระบบด้วย Google เพื่อส่งคำขอบริการ และติดตามสถานะงานได้ทันที</p>
-      <button onclick="openLogin()" class="pbtn pbtn-glow !bg-white !text-ink-900 !px-7 !py-3.5 !text-[15px] mt-7 shadow-xl relative z-10">เข้าสู่ระบบ / ส่งงานใหม่</button>
+  <section class="max-w-6xl mx-auto px-5 sm:px-8 pb-24">
+    <div class="cta-panel relative overflow-hidden reveal">
+      <div class="energy-orb-wrap" style="opacity:.55;top:-180px;right:-140px;width:420px;height:420px">
+        <div class="energy-orb-ring r1"></div><div class="energy-orb-core"></div>
+      </div>
+      <h2 class="section-headline relative z-10">พร้อมเริ่มต้นโครงการโซลาร์เซลล์ของคุณ?</h2>
+      <p class="text-white/50 mt-4 max-w-md mx-auto relative z-10 font-light">เข้าสู่ระบบด้วย Google เพื่อส่งคำขอบริการ และติดตามสถานะงานได้ทันที</p>
+      <button onclick="openLogin()" class="pbtn-hero-primary mt-8 relative z-10">เข้าสู่ระบบ / ส่งงานใหม่</button>
     </div>
   </section>
 
   <!-- FOOTER / CONTACT -->
-  <footer id="contact" class="bg-ink-900 text-ink-300 py-12 relative overflow-hidden">
-    <div class="absolute top-0 left-0 right-0 h-[3px]" style="background:linear-gradient(90deg,#fbbf24,#34d399,#60a5fa,#fbbf24);background-size:200% auto;animation:gradFlow 5s linear infinite"></div>
+  <footer id="contact" class="text-ink-300 py-14 relative overflow-hidden" style="background:#08070a">
+    <div class="absolute top-0 left-0 right-0 h-[3px]" style="background:linear-gradient(90deg,rgb(var(--b300)),rgb(var(--b600)),rgb(var(--b300)));background-size:200% auto;animation:gradFlow 5s linear infinite"></div>
     <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row justify-between gap-8">
       <div>
         <div class="flex items-center gap-2.5 mb-3">
-          <div id="footerLogoIcon" class="w-8 h-8 rounded-lg bg-gradient-to-br from-sun-400 to-brand-600 flex items-center justify-center text-white text-sm font-bold overflow-hidden">☀</div>
+          <div id="footerLogoIcon" class="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold overflow-hidden" style="background:linear-gradient(135deg,rgb(var(--b400)),rgb(var(--b700)))">☀</div>
           <span class="font-bold text-white">KV Solar Electric</span>
         </div>
         <p class="text-sm text-ink-400 max-w-xs">บริษัท เควี โซล่าร์ อิเล็คทริค — บริการโซลาร์เซลล์ครบวงจร สินค้าคุณภาพ ติดตั้งมาตรฐาน ควบคุมโดยวิศวกร</p>
       </div>
       <div class="text-sm space-y-2">
         <div class="text-white font-semibold mb-1">ติดต่อ</div>
-        <div>📞 <a href="tel:0936432288" class="hover:text-amber-400">093-643-2288</a></div>
-        <div>📘 <a href="https://www.facebook.com/search/top?q=KV%20Solar%20Electric" target="_blank" rel="noopener" class="hover:text-amber-400">KV Solar Electric</a></div>
+        <div>📞 <a href="tel:0936432288" class="footer-link">093-643-2288</a></div>
+        <div>📘 <a href="https://www.facebook.com/search/top?q=KV%20Solar%20Electric" target="_blank" rel="noopener" class="footer-link">KV Solar Electric</a></div>
       </div>
     </div>
     <div class="max-w-6xl mx-auto px-5 sm:px-8 mt-8 pt-6 border-t border-white/10 text-xs text-ink-500">© <span id="yr"></span> บริษัท เควี โซล่าร์ อิเล็คทริค — สงวนลิขสิทธิ์</div>
@@ -1074,19 +1119,14 @@ tailwind.config = {
 <div id="themeFab">
   <div class="fab-btn" onclick="document.getElementById('themePop').classList.toggle('open')">🎨</div>
   <div id="themePop">
-    <div class="ttl">โหมดการแสดงผล</div>
-    <div class="mode-toggle-row">
-      <button id="modeLightBtn" class="mode-fab-btn on" onclick="setMode('light')">☀️ สว่าง</button>
-      <button id="modeDarkBtn" class="mode-fab-btn" onclick="setMode('dark')">🌙 มืด</button>
-    </div>
-    <div class="ttl" style="margin-top:14px">เลือกธีมสี</div>
+    <div class="ttl">เลือกสีหลักของแบรนด์</div>
     <div class="sw-grid">
-      <div class="sw on" data-theme="amber" style="background:linear-gradient(135deg,#fbbf24,#d97706)" onclick="setTheme('amber')"></div>
-      <div class="sw" data-theme="emerald" style="background:linear-gradient(135deg,#34d399,#059669)" onclick="setTheme('emerald')"></div>
-      <div class="sw" data-theme="blue" style="background:linear-gradient(135deg,#60a5fa,#2563eb)" onclick="setTheme('blue')"></div>
-      <div class="sw" data-theme="teal" style="background:linear-gradient(135deg,#2dd4bf,#0d9488)" onclick="setTheme('teal')"></div>
-      <div class="sw" data-theme="rose" style="background:linear-gradient(135deg,#fb7185,#e11d48)" onclick="setTheme('rose')"></div>
-      <div class="sw" data-theme="violet" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)" onclick="setTheme('violet')"></div>
+      <div class="sw on" data-theme="amber" style="background:linear-gradient(135deg,#e08242,#583a14)" onclick="setTheme('amber')"></div>
+      <div class="sw" data-theme="emerald" style="background:linear-gradient(135deg,#24bf8a,#0d4c3a)" onclick="setTheme('emerald')"></div>
+      <div class="sw" data-theme="blue" style="background:linear-gradient(135deg,#3877e0,#0a261a)" onclick="setTheme('blue')"></div>
+      <div class="sw" data-theme="teal" style="background:linear-gradient(135deg,#1fab9d,#082e2c)" onclick="setTheme('teal')"></div>
+      <div class="sw" data-theme="rose" style="background:linear-gradient(135deg,#d4385f,#321217)" onclick="setTheme('rose')"></div>
+      <div class="sw" data-theme="violet" style="background:linear-gradient(135deg,#764bd1,#19102f)" onclick="setTheme('violet')"></div>
     </div>
   </div>
 </div>
@@ -1516,16 +1556,15 @@ function openProfileMenu(){
 /* ===================== PUBLIC: SERVICES ===================== */
 function renderServiceCards(){
   const wrap = document.getElementById("serviceCards");
-  const glowColors = ["#fbbf24","#f59e0b","#8b5cf6","#10b981","#3b82f6","#06b6d4"];
   wrap.innerHTML = SERVICES.map((s,i)=>`
-    <div class="bg-white rounded-2xl border ${i===1?'border-amber-300 ring-2 ring-amber-200':'border-ink-100'} p-6 pt-7 lift ${i===1?'sheen':''} relative overflow-hidden">
-      <i class="cert-glow-blob" style="width:90px;height:90px;background:${glowColors[i]};top:-30px;right:-25px;animation-duration:${8+i}s"></i>
-      ${i===1?'<div class="best-ribbon"><span>⭐ แนะนำ</span></div>':''}
-      <div class="text-3xl mb-3 wiggle-on-hover inline-block relative z-10">${s.icon}</div>
-      <div class="font-bold text-ink-900 leading-snug mb-1.5 relative z-10">${esc(s.label)}</div>
-      <div class="text-ink-500 text-[13px] leading-relaxed mb-4 relative z-10">${esc(s.desc)}</div>
-      <div class="font-extrabold text-xl price-pop relative z-10 ${i===1?'text-amber-600':'text-ink-900'}">${s.fixed? baht(s.price) : 'ตามขนาดงาน'}</div>
-      <div class="text-[11px] text-ink-400 mt-0.5 relative z-10">${s.fixed? 'ราคาเหมาจ่าย':'ประเมินราคาหลังสำรวจ'}</div>
+    <div class="bento-card ${i===1?'bento-card-featured lg:col-span-2 lg:row-span-2':''} relative overflow-hidden">
+      <i class="cert-glow-blob" style="width:120px;height:120px;background:rgb(var(--b500));top:-35px;right:-30px;opacity:.18;animation-duration:${8+i}s"></i>
+      ${i===1?'<div class="best-ribbon-dark"><span>⭐ แนะนำ</span></div>':''}
+      <div class="${i===1?'text-5xl mb-5':'text-3xl mb-3'} relative z-10">${s.icon}</div>
+      <div class="font-bold text-white leading-snug mb-2 relative z-10 ${i===1?'text-xl':''}">${esc(s.label)}</div>
+      <div class="text-white/45 text-[13px] leading-relaxed mb-5 relative z-10 font-light ${i===1?'max-w-xs':''}">${esc(s.desc)}</div>
+      <div class="font-extrabold ${i===1?'text-2xl':'text-xl'} price-pop relative z-10" style="color:${i===1?'rgb(var(--b300))':'#fff'}">${s.fixed? baht(s.price) : 'ตามขนาดงาน'}</div>
+      <div class="text-[11px] text-white/35 mt-1 relative z-10">${s.fixed? 'ราคาเหมาจ่าย':'ประเมินราคาหลังสำรวจ'}</div>
     </div>
   `).join("");
 }
@@ -1634,10 +1673,19 @@ function showCertItem(i){
   document.querySelectorAll(".cert-dot").forEach((d,idx)=>d.classList.toggle("on", idx===i));
   if(certTimer){ clearInterval(certTimer); certTimer = setInterval(()=>{ showCertItem((certIndex+1)%certItems.length); }, 5000); }
 }
-function renderWarrantyPortfolioMini(){
+function shuffleArr(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+async function renderWarrantyPortfolioMini(){
   const wrap = document.getElementById("warrantyPortfolioMini");
   if(!wrap) return;
-  const picks = DEMO_PORTFOLIO.slice(0,4);
+  let standalone = [], jobPhotos = [];
+  try{ [standalone, jobPhotos] = await Promise.all([db.listPortfolioPhotos(), db.listPublicPhotos()]); }catch(e){ standalone=[]; jobPhotos=[]; }
+  const real = [...(standalone||[]), ...(jobPhotos||[])];
+  const pool = real.length ? real : DEMO_PORTFOLIO;
+  const picks = shuffleArr(pool).slice(0,4);
   wrap.innerHTML = picks.map(p=>`
     <div onclick="showLightbox('${esc(p.url)}')">
       <img src="${esc(p.url)}" loading="lazy" alt="ผลงานในระยะรับประกัน ${esc(p.caption||'')}" onerror="this.closest('div').style.display='none'">
@@ -2638,22 +2686,22 @@ function setTheme(name){
   setTheme(saved);
 })();
 
-/* ===================== LIGHT / DARK MODE ===================== */
-function setMode(mode){
-  document.documentElement.classList.toggle("dark", mode==="dark");
-  const lightBtn = document.getElementById("modeLightBtn"), darkBtn = document.getElementById("modeDarkBtn");
-  if(lightBtn) lightBtn.classList.toggle("on", mode==="light");
-  if(darkBtn) darkBtn.classList.toggle("on", mode==="dark");
-  try{ localStorage.setItem("sf_mode", mode); }catch(e){}
+/* ===================== โหมดมืดถาวร (เอกลักษณ์แบรนด์ใหม่) ===================== */
+document.documentElement.classList.add("dark");
+
+/* ===================== CURSOR GLOW (พรีเมียม, เฉพาะเดสก์ท็อป) ===================== */
+if(window.matchMedia && window.matchMedia("(pointer: fine)").matches){
+  const glow = document.createElement("div");
+  glow.id = "cursorGlow";
+  glow.style.opacity = "0";
+  document.body.appendChild(glow);
+  let glowVisible = false;
+  document.addEventListener("mousemove", (e)=>{
+    glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    if(!glowVisible){ glow.style.opacity = "1"; glowVisible = true; }
+  });
+  document.addEventListener("mouseleave", ()=>{ glow.style.opacity = "0"; glowVisible = false; });
 }
-(function initMode(){
-  let saved = null;
-  try{ saved = localStorage.getItem("sf_mode"); }catch(e){}
-  if(!saved){
-    saved = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
-  }
-  setMode(saved);
-})();
 
 document.addEventListener("click", (e)=>{
   const pop = document.getElementById("themePop");
