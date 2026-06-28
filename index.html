@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="th" class="dark">
+<html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +37,7 @@ tailwind.config = {
   [data-theme="rose"]{ --b50:255 232 238;--b100:255 200 215;--b200:255 150 175;--b300:240 96 130;--b400:212 56 95;--b500:175 33 70;--b600:140 26 56;--b700:107 21 45;--b800:76 16 33;--b900:50 12 23; --accent:#af2146;}
   [data-theme="violet"]{ --b50:240 234 255;--b100:222 204 255;--b200:189 153 250;--b300:152 107 235;--b400:118 75 209;--b500:88 53 173;--b600:69 41 138;--b700:53 32 107;--b800:38 23 78;--b900:25 15 52; --accent:#583dad;}
 
-  html{font-family:'IBM Plex Sans Thai','Inter',sans-serif;background:#08070a;scroll-behavior:smooth}
+  html{font-family:'IBM Plex Sans Thai','Inter',sans-serif;background:#fdfaf5;scroll-behavior:smooth}
   body,button,a,input,select,textarea,[class*="bg-"],[class*="text-"],[class*="ring-"],[class*="border-"]{transition:background-color .35s ease,color .35s ease,border-color .35s ease,box-shadow .25s ease,transform .18s ease}
   ::-webkit-scrollbar{height:9px;width:9px}
   ::-webkit-scrollbar-thumb{background:rgb(var(--b500));border-radius:9px}
@@ -56,7 +56,7 @@ tailwind.config = {
   /* ============================================================
      ===================== HERO: OBSIDIAN SOLAR ===================
      ============================================================ */
-  #top{background:radial-gradient(ellipse 80% 60% at 75% 0%, rgb(var(--b900) / .35), transparent 60%), #08070a}
+  #top{background:radial-gradient(ellipse 80% 60% at 75% 0%, rgb(var(--b100) / .6), transparent 60%), #fdfaf5}
   .energy-orb-wrap{position:absolute;width:560px;height:560px;pointer-events:none;z-index:0}
   .energy-orb-core{position:absolute;inset:36%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe2b8,rgb(var(--b400)) 35%,rgb(var(--b700)) 72%,transparent 100%);filter:blur(1px);animation:orbPulse 5s ease-in-out infinite;box-shadow:0 0 110px 24px rgb(var(--b500) / .45),0 0 220px 70px rgb(var(--b700) / .22)}
   .energy-orb-ring{position:absolute;border-radius:50%;border:1px solid rgb(var(--b400) / .22)}
@@ -66,38 +66,40 @@ tailwind.config = {
   @keyframes orbPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
   @keyframes orbRotate{to{transform:rotate(360deg)}}
 
-  .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);color:rgb(var(--b300));font-size:12px;font-weight:600;padding:7px 16px;border-radius:9999px}
-  .hero-headline{font-size:clamp(2.4rem,5.2vw,3.6rem);font-weight:800;color:#fff;line-height:1.12;letter-spacing:-.01em}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgb(var(--b50));border:1px solid rgb(var(--b200));color:rgb(var(--b700));font-size:12px;font-weight:600;padding:7px 16px;border-radius:9999px}
+  .hero-headline{font-size:clamp(2.4rem,5.2vw,3.6rem);font-weight:800;color:#1c1410;line-height:1.12;letter-spacing:-.01em}
   .hero-headline-accent{background:linear-gradient(100deg,rgb(var(--b300)),rgb(var(--b400)) 40%,#ffd98a 65%,rgb(var(--b400)));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:heroGradFlow 6s linear infinite}
   @keyframes heroGradFlow{to{background-position:200% center}}
-  .hero-stat-num{color:#fff;background:linear-gradient(120deg,#fff,rgb(var(--b300)));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero-stat-num{color:#1c1410;background:linear-gradient(120deg,#1c1410,rgb(var(--b600)));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 
   .pbtn-hero-primary{padding:14px 26px;border-radius:13px;font-weight:700;font-size:15px;color:#1a1108;background:linear-gradient(120deg,rgb(var(--b300)),rgb(var(--b500)));box-shadow:0 10px 30px -8px rgb(var(--b500) / .55);transition:transform .2s,box-shadow .2s;cursor:pointer;border:none;display:inline-flex;align-items:center}
   .pbtn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 14px 36px -8px rgb(var(--b500) / .7)}
   .pbtn-hero-primary:active{transform:translateY(0) scale(.98)}
-  .pbtn-hero-ghost{padding:14px 26px;border-radius:13px;font-weight:600;font-size:15px;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);transition:all .2s;display:inline-flex;align-items:center}
-  .pbtn-hero-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25)}
+  .pbtn-hero-ghost{padding:14px 26px;border-radius:13px;font-weight:600;font-size:15px;color:#1c1410;background:#fff;border:1px solid rgb(var(--b200));transition:all .2s;display:inline-flex;align-items:center;box-shadow:0 2px 10px -4px rgba(28,20,16,.08)}
+  .pbtn-hero-ghost:hover{background:rgb(var(--b50));border-color:rgb(var(--b300))}
 
   .hero-glass-frame{position:relative;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.04) inset}
   .hero-glass-frame-sheen{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 50%)}
-  .hero-float-badge{position:absolute;bottom:-22px;left:-22px;background:rgba(18,16,14,.75);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);border-radius:16px;box-shadow:0 20px 40px -12px rgba(0,0,0,.6);padding:14px 16px;display:flex;align-items:center;gap:12px;max-width:230px}
+  .hero-float-badge{position:absolute;bottom:-22px;left:-22px;background:#fff;border:1px solid rgb(var(--b100));border-radius:16px;box-shadow:0 20px 40px -16px rgba(28,20,16,.18);padding:14px 16px;display:flex;align-items:center;gap:12px;max-width:230px}
   .hero-float-badge-icon{width:42px;height:42px;border-radius:11px;background:rgb(var(--b500) / .18);color:rgb(var(--b300));display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
 
   /* ============================================================
      ================ SECTION HEADERS (พรีเมียม) ===================
      ============================================================ */
-  .section-eyebrow{color:rgb(var(--b400));font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.12em}
-  .section-headline{font-size:clamp(1.9rem,3.6vw,2.6rem);font-weight:800;color:#fff;letter-spacing:-.01em;line-height:1.2}
+  .section-eyebrow{color:rgb(var(--b600));font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.12em}
+  .section-eyebrow-onDark{color:rgb(var(--b300));font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.12em}
+  .section-headline{font-size:clamp(1.9rem,3.6vw,2.6rem);font-weight:800;color:#1c1410;letter-spacing:-.01em;line-height:1.2}
+  .section-headline-onDark{font-size:clamp(1.9rem,3.6vw,2.6rem);font-weight:800;color:#fff;letter-spacing:-.01em;line-height:1.2}
 
   /* ============================================================
      ===================== BENTO SERVICE CARDS =====================
      ============================================================ */
-  .bento-card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:28px 26px;backdrop-filter:blur(6px);transition:transform .3s cubic-bezier(.2,.8,.3,1),border-color .3s,background .3s;display:flex;flex-direction:column}
-  .bento-card:hover{transform:translateY(-6px);border-color:rgb(var(--b400) / .4);background:rgba(255,255,255,.055)}
-  .bento-card-featured{background:linear-gradient(155deg,rgba(255,255,255,.06),rgb(var(--b900) / .3));border-color:rgb(var(--b400) / .35);justify-content:center}
-  .best-ribbon-dark{position:absolute;top:16px;right:16px;background:linear-gradient(120deg,rgb(var(--b300)),rgb(var(--b500)));color:#1a1108;font-size:11px;font-weight:700;padding:5px 12px;border-radius:9999px;z-index:2;box-shadow:0 4px 14px -2px rgb(var(--b500) / .5)}
+  .bento-card{background:#fff;border:1px solid rgb(var(--b100));border-radius:20px;padding:28px 26px;box-shadow:0 4px 18px -8px rgba(28,20,16,.08);transition:transform .3s cubic-bezier(.2,.8,.3,1),border-color .3s,box-shadow .3s;display:flex;flex-direction:column}
+  .bento-card:hover{transform:translateY(-6px);border-color:rgb(var(--b300));box-shadow:0 16px 34px -12px rgb(var(--b500) / .25)}
+  .bento-card-featured{background:linear-gradient(155deg,rgb(var(--b50)),#fff 60%);border-color:rgb(var(--b300));justify-content:center}
+  .best-ribbon-dark{position:absolute;top:16px;right:16px;background:linear-gradient(120deg,rgb(var(--b400)),rgb(var(--b600)));color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:9999px;z-index:2;box-shadow:0 4px 14px -2px rgb(var(--b500) / .5)}
 
-  .cta-panel{text-align:center;border-radius:28px;padding:60px 40px;background:linear-gradient(155deg,rgba(255,255,255,.05),rgb(var(--b900) / .35));border:1px solid rgb(var(--b400) / .25);box-shadow:0 0 80px -20px rgb(var(--b600) / .3)}
+  .cta-panel{text-align:center;border-radius:28px;padding:60px 40px;background:linear-gradient(135deg,rgb(var(--b400)),rgb(var(--b600)) 60%,rgb(var(--b800)));box-shadow:0 25px 60px -15px rgb(var(--b600) / .45)}
   .footer-link{transition:color .2s}
   .footer-link:hover{color:rgb(var(--b400))}
 
@@ -666,7 +668,7 @@ tailwind.config = {
             ติดตั้งโซลาร์เซลล์<br>
             <span class="hero-headline-accent">ครบวงจร ระดับพรีเมียม</span>
           </h1>
-          <p class="text-white/55 text-base sm:text-lg mt-6 leading-relaxed max-w-lg font-light">
+          <p class="text-ink-500 text-base sm:text-lg mt-6 leading-relaxed max-w-lg">
             ตั้งแต่จัดหาผู้รับเหมา เขียนแบบ ไปจนถึงควบคุมงานติดตั้ง — ดูสถานะงานของคุณได้ตลอดเวลา พร้อมรับประกันผลงานสูงสุด 10 ปี
           </p>
           <div class="flex flex-wrap gap-3 mt-9">
@@ -674,11 +676,11 @@ tailwind.config = {
             <a href="#services" class="pbtn-hero-ghost">ดูบริการทั้งหมด ↓</a>
           </div>
           <div class="flex items-center gap-7 mt-11 text-sm">
-            <div><div class="num text-3xl font-bold hero-stat-num" id="statJobsDone" data-target="0">0</div><div class="text-white/35 text-xs mt-1 tracking-wide">งานที่ส่งมอบแล้ว</div></div>
+            <div><div class="num text-3xl font-bold hero-stat-num" id="statJobsDone" data-target="0">0</div><div class="text-ink-400 text-xs mt-1 tracking-wide">งานที่ส่งมอบแล้ว</div></div>
             <div class="w-px h-10" style="background:rgba(255,255,255,.1)"></div>
-            <div><div class="num text-3xl font-bold hero-stat-num">1-10 <span class="text-lg">ปี</span></div><div class="text-white/35 text-xs mt-1 tracking-wide">รับประกันผลงาน</div></div>
+            <div><div class="num text-3xl font-bold hero-stat-num">1-10 <span class="text-lg">ปี</span></div><div class="text-ink-400 text-xs mt-1 tracking-wide">รับประกันผลงาน</div></div>
             <div class="w-px h-10" style="background:rgba(255,255,255,.1)"></div>
-            <div><div class="num text-3xl font-bold hero-stat-num">100%</div><div class="text-white/35 text-xs mt-1 tracking-wide">ติดตามออนไลน์</div></div>
+            <div><div class="num text-3xl font-bold hero-stat-num">100%</div><div class="text-ink-400 text-xs mt-1 tracking-wide">ติดตามออนไลน์</div></div>
           </div>
         </div>
         <div class="relative fade-in" id="heroImgWrap" style="animation-delay:.15s">
@@ -688,7 +690,7 @@ tailwind.config = {
           </div>
           <div class="hero-float-badge fade-in" style="animation-delay:.5s">
             <div class="hero-float-badge-icon">✓</div>
-            <div class="text-sm"><div class="font-semibold text-white">ส่งมอบงานแล้ว</div><div class="text-white/40 text-xs">รับประกันเริ่มทันที</div></div>
+            <div class="text-sm"><div class="font-semibold text-ink-900">ส่งมอบงานแล้ว</div><div class="text-ink-400 text-xs">รับประกันเริ่มทันที</div></div>
           </div>
         </div>
       </div>
@@ -700,7 +702,7 @@ tailwind.config = {
     <div class="text-center max-w-xl mx-auto mb-14 reveal relative z-10">
       <span class="section-eyebrow">บริการของเรา</span>
       <h2 class="section-headline mt-4">เลือกบริการที่ตรงกับความต้องการ</h2>
-      <p class="text-white/45 mt-4 font-light">เลือกได้มากกว่า 1 บริการ ระบบจะรวมราคาให้อัตโนมัติ</p>
+      <p class="text-ink-500 mt-4">เลือกได้มากกว่า 1 บริการ ระบบจะรวมราคาให้อัตโนมัติ</p>
     </div>
     <div id="serviceCards" class="grid sm:grid-cols-2 lg:grid-cols-3 lg:[grid-auto-flow:dense] gap-5 reveal-stagger relative z-10"></div>
   </section>
@@ -774,8 +776,8 @@ tailwind.config = {
     </div>
     <div class="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
       <div class="text-center max-w-xl mx-auto mb-14 reveal">
-        <span class="section-eyebrow">ผลงานของเรา</span>
-        <h2 class="section-headline mt-4">งานที่ติดตั้งและส่งมอบแล้ว</h2>
+        <span class="section-eyebrow-onDark">ผลงานของเรา</span>
+        <h2 class="section-headline-onDark mt-4">งานที่ติดตั้งและส่งมอบแล้ว</h2>
         <p class="text-white/45 mt-4 font-light">ภาพจริงจากหน้างานที่ลูกค้าไว้วางใจ</p>
       </div>
       <div id="portfolioGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 reveal-stagger"></div>
@@ -792,7 +794,7 @@ tailwind.config = {
       <div class="text-center max-w-2xl mx-auto mb-14 reveal">
         <span class="section-eyebrow">ความมั่นใจระดับสูงสุด</span>
         <h2 class="section-headline mt-4">รับประกันผลงาน 1-10 ปี</h2>
-        <p class="text-white/45 mt-4 leading-relaxed font-light">
+        <p class="text-ink-500 mt-4 leading-relaxed">
           ทุกงานที่ส่งมอบเรียบร้อยจะเริ่มนับระยะประกันทันที — ลองเลื่อนดูตัวอย่างใบรับประกันด้านล่าง
           เพื่อดูว่าระยะเวลาที่ต่างกันจะให้ความคุ้มครองคุณนานแค่ไหน
         </p>
@@ -844,12 +846,12 @@ tailwind.config = {
   <!-- CTA -->
   <section class="max-w-6xl mx-auto px-5 sm:px-8 pb-24">
     <div class="cta-panel relative overflow-hidden reveal">
-      <div class="energy-orb-wrap" style="opacity:.55;top:-180px;right:-140px;width:420px;height:420px">
+      <div class="energy-orb-wrap" style="opacity:.5;top:-180px;right:-140px;width:420px;height:420px">
         <div class="energy-orb-ring r1"></div><div class="energy-orb-core"></div>
       </div>
-      <h2 class="section-headline relative z-10">พร้อมเริ่มต้นโครงการโซลาร์เซลล์ของคุณ?</h2>
-      <p class="text-white/50 mt-4 max-w-md mx-auto relative z-10 font-light">เข้าสู่ระบบด้วย Google เพื่อส่งคำขอบริการ และติดตามสถานะงานได้ทันที</p>
-      <button onclick="openLogin()" class="pbtn-hero-primary mt-8 relative z-10">เข้าสู่ระบบ / ส่งงานใหม่</button>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white relative z-10">พร้อมเริ่มต้นโครงการโซลาร์เซลล์ของคุณ?</h2>
+      <p class="text-white/80 mt-4 max-w-md mx-auto relative z-10">เข้าสู่ระบบด้วย Google เพื่อส่งคำขอบริการ และติดตามสถานะงานได้ทันที</p>
+      <button onclick="openLogin()" class="pbtn !bg-white !text-ink-900 !px-7 !py-3.5 !text-[15px] mt-8 shadow-xl relative z-10">เข้าสู่ระบบ / ส่งงานใหม่</button>
     </div>
   </section>
 
@@ -1558,13 +1560,13 @@ function renderServiceCards(){
   const wrap = document.getElementById("serviceCards");
   wrap.innerHTML = SERVICES.map((s,i)=>`
     <div class="bento-card ${i===1?'bento-card-featured lg:col-span-2 lg:row-span-2':''} relative overflow-hidden">
-      <i class="cert-glow-blob" style="width:120px;height:120px;background:rgb(var(--b500));top:-35px;right:-30px;opacity:.18;animation-duration:${8+i}s"></i>
+      <i class="cert-glow-blob" style="width:120px;height:120px;background:rgb(var(--b500));top:-35px;right:-30px;opacity:.14;animation-duration:${8+i}s"></i>
       ${i===1?'<div class="best-ribbon-dark"><span>⭐ แนะนำ</span></div>':''}
       <div class="${i===1?'text-5xl mb-5':'text-3xl mb-3'} relative z-10">${s.icon}</div>
-      <div class="font-bold text-white leading-snug mb-2 relative z-10 ${i===1?'text-xl':''}">${esc(s.label)}</div>
-      <div class="text-white/45 text-[13px] leading-relaxed mb-5 relative z-10 font-light ${i===1?'max-w-xs':''}">${esc(s.desc)}</div>
-      <div class="font-extrabold ${i===1?'text-2xl':'text-xl'} price-pop relative z-10" style="color:${i===1?'rgb(var(--b300))':'#fff'}">${s.fixed? baht(s.price) : 'ตามขนาดงาน'}</div>
-      <div class="text-[11px] text-white/35 mt-1 relative z-10">${s.fixed? 'ราคาเหมาจ่าย':'ประเมินราคาหลังสำรวจ'}</div>
+      <div class="font-bold text-ink-900 leading-snug mb-2 relative z-10 ${i===1?'text-xl':''}">${esc(s.label)}</div>
+      <div class="text-ink-500 text-[13px] leading-relaxed mb-5 relative z-10 ${i===1?'max-w-xs':''}">${esc(s.desc)}</div>
+      <div class="font-extrabold ${i===1?'text-2xl':'text-xl'} price-pop relative z-10" style="color:${i===1?'rgb(var(--b600))':'#1c1410'}">${s.fixed? baht(s.price) : 'ตามขนาดงาน'}</div>
+      <div class="text-[11px] text-ink-400 mt-1 relative z-10">${s.fixed? 'ราคาเหมาจ่าย':'ประเมินราคาหลังสำรวจ'}</div>
     </div>
   `).join("");
 }
@@ -2687,7 +2689,7 @@ function setTheme(name){
 })();
 
 /* ===================== โหมดมืดถาวร (เอกลักษณ์แบรนด์ใหม่) ===================== */
-document.documentElement.classList.add("dark");
+/* โหมดกลางวันเป็นค่าเริ่มต้น (ไม่บังคับมืดแล้ว) */
 
 /* ===================== CURSOR GLOW (พรีเมียม, เฉพาะเดสก์ท็อป) ===================== */
 if(window.matchMedia && window.matchMedia("(pointer: fine)").matches){
