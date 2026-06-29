@@ -2,8 +2,21 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>KV Solar Electric · บริการโซลาร์เซลล์ครบวงจร</title>
+
+<!-- ===================== PWA: ติดตั้งลงหน้าจอมือถือ ===================== -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#c45d29">
+<link rel="icon" href="icon-192.png" type="image/png">
+<!-- iOS -->
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KV Solar">
+<!-- Android / Chrome -->
+<meta name="mobile-web-app-capable" content="yes">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -672,6 +685,20 @@ tailwind.config = {
   html.dark .best-ribbon span{box-shadow:0 3px 12px -2px rgba(0,0,0,.6)}
   html.dark .warranty-mini-grid > div::after{background:rgba(5,150,105,.95)}
   html.dark #themeFab .fab-btn{background:#161b29;border-color:#2b3450;box-shadow:0 8px 22px -6px rgba(0,0,0,.6)}
+
+  /* ============================================================
+     ===================== PWA INSTALL BANNER =====================
+     ============================================================ */
+  #pwaInstallBanner{position:fixed;left:12px;right:12px;bottom:-120px;z-index:9000;background:#fff;border:1px solid rgb(var(--b100));border-radius:18px;box-shadow:0 20px 50px -16px rgba(28,20,16,.35);padding:14px 14px;display:flex;align-items:center;gap:12px;transition:bottom .35s cubic-bezier(.2,.8,.3,1)}
+  #pwaInstallBanner.show{bottom:14px}
+  .pwa-banner-icon{font-size:26px;flex-shrink:0}
+  .pwa-banner-text{flex:1;min-width:0}
+  .pwa-banner-title{font-weight:700;font-size:13.5px;color:#1c1410}
+  .pwa-banner-sub{font-size:11.5px;color:#7a6a5e;margin-top:2px;line-height:1.5}
+  .pwa-share-ico{display:inline-block}
+  .pwa-banner-install{background:linear-gradient(120deg,rgb(var(--b400)),rgb(var(--b600)));color:#fff;font-size:12.5px;font-weight:700;padding:8px 14px;border-radius:10px;border:none;flex-shrink:0;cursor:pointer}
+  .pwa-banner-close{background:none;border:none;color:#b0a193;font-size:18px;line-height:1;cursor:pointer;flex-shrink:0;padding:4px}
+  @media (max-width:380px){ .pwa-banner-sub{display:none} }
 </style>
 
 </head>
@@ -2978,6 +3005,68 @@ function burstConfetti(){
     document.body.appendChild(c);
     setTimeout(()=>c.remove(), (dur+0.5)*1000);
   }
+}
+
+/* ===================== PWA: ลงทะเบียน Service Worker ===================== */
+if("serviceWorker" in navigator){
+  window.addEventListener("load", ()=>{
+    navigator.serviceWorker.register("sw.js").catch((e)=>console.error("SW register failed:", e));
+  });
+}
+
+/* ===================== PWA: แบนเนอร์แนะนำติดตั้งแอป ===================== */
+(function pwaInstallBanner(){
+  const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  if(isStandalone) return; // เปิดจากแอปที่ติดตั้งแล้ว ไม่ต้องโชว์
+
+  const ua = navigator.userAgent;
+  const isIOS = /iPhone|iPad|iPod/.test(ua) && !window.MSStream;
+  const isAndroid = /Android/.test(ua);
+  if(!isIOS && !isAndroid) return; // เดสก์ท็อปไม่โชว์
+
+  let dismissed = false;
+  try{ dismissed = localStorage.getItem("sf_pwa_banner_dismissed") === "1"; }catch(e){}
+  if(dismissed) return;
+
+  const banner = document.createElement("div");
+  banner.id = "pwaInstallBanner";
+  banner.innerHTML = isIOS ? `
+    <div class="pwa-banner-icon">📱</div>
+    <div class="pwa-banner-text">
+      <div class="pwa-banner-title">ติดตั้งเป็นแอปบน iPhone</div>
+      <div class="pwa-banner-sub"><b>ล็อกอินก่อน</b> แล้วกดปุ่มแชร์ <span class="pwa-share-ico">⬆️</span> ด้านล่าง → เลือก "เพิ่มไปยังหน้าจอโฮม"</div>
+    </div>
+    <button class="pwa-banner-close" onclick="dismissPwaBanner()">✕</button>
+  ` : `
+    <div class="pwa-banner-icon">📱</div>
+    <div class="pwa-banner-text">
+      <div class="pwa-banner-title">ติดตั้งเป็นแอปบนมือถือ</div>
+      <div class="pwa-banner-sub">เปิดใช้งานได้เหมือนแอปจริง ไม่ต้องเปิดเบราว์เซอร์ทุกครั้ง</div>
+    </div>
+    <button class="pwa-banner-install" id="pwaInstallBtn" onclick="triggerPwaInstall()">ติดตั้ง</button>
+    <button class="pwa-banner-close" onclick="dismissPwaBanner()">✕</button>
+  `;
+  document.body.appendChild(banner);
+  requestAnimationFrame(()=>banner.classList.add("show"));
+})();
+
+function dismissPwaBanner(){
+  const el = document.getElementById("pwaInstallBanner");
+  if(el){ el.classList.remove("show"); setTimeout(()=>el.remove(), 300); }
+  try{ localStorage.setItem("sf_pwa_banner_dismissed", "1"); }catch(e){}
+}
+
+let deferredPwaPrompt = null;
+window.addEventListener("beforeinstallprompt", (e)=>{
+  e.preventDefault();
+  deferredPwaPrompt = e;
+});
+async function triggerPwaInstall(){
+  if(!deferredPwaPrompt){ dismissPwaBanner(); return; }
+  deferredPwaPrompt.prompt();
+  await deferredPwaPrompt.userChoice;
+  deferredPwaPrompt = null;
+  dismissPwaBanner();
 }
 </script>
 
