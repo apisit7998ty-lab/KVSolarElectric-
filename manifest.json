@@ -1,0 +1,17 @@
+{
+  "name": "KV Solar Electric",
+  "short_name": "KV Solar",
+  "description": "ระบบติดตามงานโซลาร์เซลล์ KV Solar Electric — ดูสถานะงาน ใบรับประกัน และแจ้งเครมได้ทุกที่",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#fefbf6",
+  "theme_color": "#c45d29",
+  "lang": "th",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
