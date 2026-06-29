@@ -723,7 +723,7 @@ tailwind.config = {
             </span>
           </h1>
           <p class="text-ink-500 text-base sm:text-lg mt-6 leading-relaxed max-w-lg">
-            ตั้งแต่จัดหาผู้รับเหมา เขียนแบบ ไปจนถึงควบคุมงานติดตั้ง — ดูสถานะงานของคุณได้ตลอดเวลา พร้อมรับประกันผลงานสูงสุด 10 ปี
+            ตั้งแต่จัดหาผู้รับเหมา เขียนแบบ ไปจนถึงควบคุมงานติดตั้ง — ดูสถานะงานของคุณได้ตลอดเวลา พร้อมรับประกันผลงานสูงสุด 25 ปี
           </p>
           <div class="flex flex-wrap gap-3 mt-9">
             <button onclick="openLogin()" class="pbtn-hero-primary">ดูสถานะงานของฉัน</button>
@@ -735,7 +735,7 @@ tailwind.config = {
               <div class="text-[11px] mt-0.5 opacity-80">งานที่ส่งมอบแล้ว</div>
             </div>
             <div class="hero-stat-chip hero-stat-chip-alt">
-              <div class="num text-2xl font-extrabold">1-10 <span class="text-base">ปี</span></div>
+              <div class="num text-2xl font-extrabold">1-25 <span class="text-base">ปี</span></div>
               <div class="text-[11px] mt-0.5 opacity-80">รับประกันผลงาน</div>
             </div>
             <div class="hero-stat-chip">
@@ -825,7 +825,7 @@ tailwind.config = {
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 reveal-stagger" id="trustBadgeRow">
         <div class="trust-badge">
           <div class="trust-badge-icon">🛡️</div>
-          <div class="num text-2xl font-extrabold text-white" id="trustWarrantyYears">1-10</div>
+          <div class="num text-2xl font-extrabold text-white" id="trustWarrantyYears">1-25</div>
           <div class="text-ink-400 text-xs mt-1">ปี รับประกันผลงาน</div>
         </div>
         <div class="trust-badge">
@@ -868,7 +868,7 @@ tailwind.config = {
 
       <div class="text-center max-w-2xl mx-auto mb-14 reveal">
         <span class="section-eyebrow">ความมั่นใจระดับสูงสุด</span>
-        <h2 class="section-headline mt-4">รับประกันผลงาน 1-10 ปี</h2>
+        <h2 class="section-headline mt-4">รับประกันผลงาน 1-25 ปี</h2>
         <p class="text-ink-500 mt-4 leading-relaxed">
           ทุกงานที่ส่งมอบเรียบร้อยจะเริ่มนับระยะประกันทันที — ลองเลื่อนดูตัวอย่างใบรับประกันด้านล่าง
           เพื่อดูว่าระยะเวลาที่ต่างกันจะให้ความคุ้มครองคุณนานแค่ไหน
@@ -2121,7 +2121,7 @@ function renderJobDetail(job, photos, slips, comments, claims){
       </div>` : `
       <div id="warrantyFields" class="grid grid-cols-2 gap-2 mt-3 ${job.status==='completed'?'':'hidden'}">
         <div><label class="text-xs text-ink-400">วันส่งมอบงาน</label><input type="date" id="warrantyStartInput" value="${job.warranty_start||todayISO()}" class="w-full border border-ink-200 rounded-lg px-2 py-1.5 text-sm mt-1"></div>
-        <div><label class="text-xs text-ink-400">ระยะรับประกัน (ปี)</label><select id="warrantyYearsInput" class="w-full border border-ink-200 rounded-lg px-2 py-1.5 text-sm mt-1">${[1,2,3,4,5,6,7,8,9,10].map(y=>`<option value="${y}" ${Number(job.warranty_years)===y?'selected':''}>${y} ปี</option>`).join("")}</select></div>
+        <div><label class="text-xs text-ink-400">ระยะรับประกัน (ปี)</label><select id="warrantyYearsInput" class="w-full border border-ink-200 rounded-lg px-2 py-1.5 text-sm mt-1">${Array.from({length:25},(_,i)=>i+1).map(y=>`<option value="${y}" ${Number(job.warranty_years)===y?'selected':''}>${y} ปี</option>`).join("")}</select></div>
         <button onclick="saveWarranty()" class="pbtn pbtn-primary !text-xs !py-2 col-span-2 mt-1">บันทึกการรับประกัน</button>
         <label class="col-span-2 flex items-center gap-2.5 bg-amber-50 rounded-lg px-3 py-2.5 mt-1 cursor-pointer">
           <input type="checkbox" id="publicShowcaseToggle" ${job.is_public_showcase?'checked':''} onchange="togglePublicShowcase(this.checked)" class="w-4 h-4 accent-amber-600">
