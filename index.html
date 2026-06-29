@@ -57,31 +57,73 @@ tailwind.config = {
      ===================== HERO: OBSIDIAN SOLAR ===================
      ============================================================ */
   #top{background:radial-gradient(ellipse 80% 60% at 75% 0%, rgb(var(--b100) / .6), transparent 60%), #fdfaf5}
-  .energy-orb-wrap{position:absolute;width:560px;height:560px;pointer-events:none;z-index:0}
-  .energy-orb-core{position:absolute;inset:36%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe2b8,rgb(var(--b400)) 35%,rgb(var(--b700)) 72%,transparent 100%);filter:blur(1px);animation:orbPulse 5s ease-in-out infinite;box-shadow:0 0 110px 24px rgb(var(--b500) / .45),0 0 220px 70px rgb(var(--b700) / .22)}
+  .energy-orb-wrap{position:absolute;width:clamp(220px,55vw,560px);height:clamp(220px,55vw,560px);pointer-events:none;z-index:0}
+  .energy-orb-core{position:absolute;inset:36%;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 35% 30%,#ffe2b8,rgb(var(--b400)) 35%,rgb(var(--b700)) 72%,transparent 100%);filter:blur(1px);animation:orbPulse 5s ease-in-out infinite;box-shadow:0 0 110px 24px rgb(var(--b500) / .45),0 0 220px 70px rgb(var(--b700) / .22)}
+  .energy-orb-core::after{content:"";position:absolute;inset:-50%;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.85) 48%,rgba(255,255,255,.2) 53%,transparent 65%);animation:orbShimmer 3.2s ease-in-out infinite}
+  @keyframes orbShimmer{0%{transform:translateX(-60%) translateY(-60%) rotate(0deg)}100%{transform:translateX(60%) translateY(60%) rotate(0deg)}}
   .energy-orb-ring{position:absolute;border-radius:50%;border:1px solid rgb(var(--b400) / .22)}
   .energy-orb-ring.r1{inset:22%;animation:orbRotate 34s linear infinite}
   .energy-orb-ring.r2{inset:9%;animation:orbRotate 48s linear infinite reverse;border-style:dashed;border-color:rgb(var(--b400) / .14)}
   .energy-orb-ring.r3{inset:0;animation:orbRotate 64s linear infinite;border-color:rgb(var(--b400) / .09)}
   @keyframes orbPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
   @keyframes orbRotate{to{transform:rotate(360deg)}}
+  .orb-spark{position:absolute;color:#ffd98a;text-shadow:0 0 8px rgb(var(--b400) / .8);animation:sparkTwinkle 2.2s ease-in-out infinite;pointer-events:none;z-index:1}
 
-  .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgb(var(--b50));border:1px solid rgb(var(--b200));color:rgb(var(--b700));font-size:12px;font-weight:600;padding:7px 16px;border-radius:9999px}
+  @media (max-width:1023px){
+    .energy-orb-wrap{opacity:.45}
+  }
+  @media (max-width:639px){
+    .energy-orb-wrap{width:170px;height:170px;top:-30px !important;right:-50px !important;opacity:.5}
+  }
+
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgb(var(--b50));border:1px solid rgb(var(--b200));color:rgb(var(--b700));font-size:12px;font-weight:600;padding:7px 16px;border-radius:9999px;animation:eyebrowGlowPulse 2.8s ease-in-out infinite}
+  @keyframes eyebrowGlowPulse{0%,100%{box-shadow:0 0 0 0 rgb(var(--b400) / .25)}50%{box-shadow:0 0 0 6px rgb(var(--b400) / 0)}}
   .hero-headline{font-size:clamp(2.4rem,5.2vw,3.6rem);font-weight:800;color:#1c1410;line-height:1.12;letter-spacing:-.01em}
-  .hero-headline-accent{background:linear-gradient(100deg,rgb(var(--b300)),rgb(var(--b400)) 40%,#ffd98a 65%,rgb(var(--b400)));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:heroGradFlow 6s linear infinite}
+  .hero-headline-accent{background:linear-gradient(100deg,rgb(var(--b300)),rgb(var(--b400)) 40%,#ffd98a 65%,rgb(var(--b400)));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:heroGradFlow 6s linear infinite;filter:drop-shadow(0 0 18px rgb(var(--b400) / .35))}
   @keyframes heroGradFlow{to{background-position:200% center}}
   .hero-stat-num{color:#1c1410;background:linear-gradient(120deg,#1c1410,rgb(var(--b600)));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 
-  .pbtn-hero-primary{padding:14px 26px;border-radius:13px;font-weight:700;font-size:15px;color:#1a1108;background:linear-gradient(120deg,rgb(var(--b300)),rgb(var(--b500)));box-shadow:0 10px 30px -8px rgb(var(--b500) / .55);transition:transform .2s,box-shadow .2s;cursor:pointer;border:none;display:inline-flex;align-items:center}
+  .pbtn-hero-primary{padding:14px 26px;border-radius:13px;font-weight:700;font-size:15px;color:#1a1108;background:linear-gradient(120deg,rgb(var(--b300)),rgb(var(--b500)));box-shadow:0 10px 30px -8px rgb(var(--b500) / .55);transition:transform .2s,box-shadow .2s;cursor:pointer;border:none;display:inline-flex;align-items:center;position:relative;overflow:hidden;animation:heroBtnGlowPulse 2.6s ease-in-out infinite}
+  .pbtn-hero-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);animation:heroBtnSheen 3.4s ease-in-out infinite}
+  @keyframes heroBtnGlowPulse{0%,100%{box-shadow:0 10px 30px -8px rgb(var(--b500) / .55)}50%{box-shadow:0 10px 38px -6px rgb(var(--b500) / .85)}}
+  @keyframes heroBtnSheen{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
   .pbtn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 14px 36px -8px rgb(var(--b500) / .7)}
   .pbtn-hero-primary:active{transform:translateY(0) scale(.98)}
   .pbtn-hero-ghost{padding:14px 26px;border-radius:13px;font-weight:600;font-size:15px;color:#1c1410;background:#fff;border:1px solid rgb(var(--b200));transition:all .2s;display:inline-flex;align-items:center;box-shadow:0 2px 10px -4px rgba(28,20,16,.08)}
-  .pbtn-hero-ghost:hover{background:rgb(var(--b50));border-color:rgb(var(--b300))}
+  .pbtn-hero-ghost:hover{background:rgb(var(--b50));border-color:rgb(var(--b300));box-shadow:0 8px 22px -6px rgb(var(--b400) / .35)}
 
-  .hero-glass-frame{position:relative;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.04) inset}
-  .hero-glass-frame-sheen{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 50%)}
-  .hero-float-badge{position:absolute;bottom:-22px;left:-22px;background:#fff;border:1px solid rgb(var(--b100));border-radius:16px;box-shadow:0 20px 40px -16px rgba(28,20,16,.18);padding:14px 16px;display:flex;align-items:center;gap:12px;max-width:230px}
-  .hero-float-badge-icon{width:42px;height:42px;border-radius:11px;background:rgb(var(--b500) / .18);color:rgb(var(--b300));display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+  .hero-glass-frame-sheen{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 50%);z-index:1;pointer-events:none}
+
+  /* ============================================================
+     ================ HERO: บรรยากาศ + รูปทะลุขอบจอ ===============
+     ============================================================ */
+  .hero-aurora{position:absolute;inset:-8% -5% auto -5%;height:640px;pointer-events:none;z-index:0;filter:blur(6px);
+    background:radial-gradient(ellipse 55% 50% at 18% 25%, rgb(var(--b200) / .55), transparent 65%),
+               radial-gradient(ellipse 45% 40% at 68% 8%, rgb(var(--b300) / .35), transparent 60%);
+    animation:auroraDrift 10s ease-in-out infinite}
+  @keyframes auroraDrift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(2%,-3%) scale(1.04)}}
+
+  .hero-headline-accent-wrap{position:relative;display:inline-block}
+  .hero-underline-swoosh{position:absolute;left:2px;bottom:-8px;width:96%;height:14px;opacity:.9}
+
+  .hero-text-col{position:relative;z-index:10}
+
+  .hero-card-frame{position:relative;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 70px -18px rgba(28,20,16,.35);z-index:2}
+  .hero-card-frame::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 42%,rgba(255,255,255,.45) 50%,transparent 58%);transform:translateX(-130%);animation:frameSheenSweep 5.5s ease-in-out infinite;z-index:3;pointer-events:none}
+  @keyframes frameSheenSweep{0%,55%{transform:translateX(-130%)}100%{transform:translateX(130%)}}
+
+  .hero-card-glow{position:absolute;inset:-20px;background:linear-gradient(135deg,rgb(var(--b300) / .45),rgb(var(--b600) / .3));border-radius:32px;filter:blur(24px);z-index:0;animation:orbPulse 5s ease-in-out infinite}
+
+  .hero-deco-chip{position:absolute;top:-24px;left:-24px;width:54px;height:54px;border-radius:16px;background:#fff;box-shadow:0 14px 30px -8px rgba(28,20,16,.25);display:flex;align-items:center;justify-content:center;z-index:5;animation:decoChipFloat 4s ease-in-out infinite}
+  @keyframes decoChipFloat{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-9px) rotate(6deg)}}
+
+  .hero-fullbleed-tint{position:absolute;inset:0;
+    background:linear-gradient(165deg, rgb(var(--b600) / .3), transparent 45%),
+               linear-gradient(to top, rgba(10,8,6,.55), transparent 45%)}
+
+  .hero-overlay-strip{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(12,9,6,.85),rgba(12,9,6,.45) 60%,transparent);padding:46px 22px 18px;display:flex;align-items:center;gap:14px;z-index:3}
+  .hero-overlay-item{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+  .hero-overlay-icon{width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,.16);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
 
   /* ============================================================
      ================ SECTION HEADERS (พรีเมียม) ===================
@@ -650,25 +692,32 @@ tailwind.config = {
   <!-- HERO -->
   <section id="top" class="relative overflow-hidden">
     <div class="hero-grid-pattern"></div>
+    <div class="hero-aurora"></div>
     <div class="energy-orb-wrap" style="top:-160px;right:-120px">
       <div class="energy-orb-ring r1"></div>
       <div class="energy-orb-ring r2"></div>
       <div class="energy-orb-ring r3"></div>
       <div class="energy-orb-core"></div>
+      <i class="orb-spark" style="top:8%;left:18%;font-size:14px;animation-delay:0s">✦</i>
+      <i class="orb-spark" style="top:62%;left:4%;font-size:10px;animation-delay:.8s">✦</i>
+      <i class="orb-spark" style="top:78%;left:30%;font-size:12px;animation-delay:1.5s">✦</i>
     </div>
     <div id="heroParticles" class="absolute inset-0 overflow-hidden"></div>
 
-    <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-20 pb-24 relative z-10">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-20 pb-28 relative z-10">
       <div class="grid lg:grid-cols-2 gap-14 items-center">
-        <div class="fade-in">
+        <div class="hero-text-col fade-in" style="max-width:none">
           <span class="hero-eyebrow">
             <span class="w-1.5 h-1.5 rounded-full" style="background:rgb(var(--b400))"></span> รับงานโซลาร์เซลล์ทั่วประเทศ
           </span>
           <h1 class="hero-headline mt-7">
             ติดตั้งโซลาร์เซลล์<br>
-            <span class="hero-headline-accent">ครบวงจร ระดับพรีเมียม</span>
+            <span class="hero-headline-accent-wrap">
+              <span class="hero-headline-accent">ครบวงจร ระดับพรีเมียม</span>
+              <svg class="hero-underline-swoosh" viewBox="0 0 380 18" preserveAspectRatio="none"><path d="M2 13 C 90 2, 290 2, 378 13" stroke="rgb(var(--b400))" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+            </span>
           </h1>
-          <p class="text-ink-500 text-base sm:text-lg mt-6 leading-relaxed max-w-lg">
+          <p class="text-ink-500 text-base sm:text-lg mt-7 leading-relaxed max-w-lg">
             ตั้งแต่จัดหาผู้รับเหมา เขียนแบบ ไปจนถึงควบคุมงานติดตั้ง — ดูสถานะงานของคุณได้ตลอดเวลา พร้อมรับประกันผลงานสูงสุด 10 ปี
           </p>
           <div class="flex flex-wrap gap-3 mt-9">
@@ -677,20 +726,36 @@ tailwind.config = {
           </div>
           <div class="flex items-center gap-7 mt-11 text-sm">
             <div><div class="num text-3xl font-bold hero-stat-num" id="statJobsDone" data-target="0">0</div><div class="text-ink-400 text-xs mt-1 tracking-wide">งานที่ส่งมอบแล้ว</div></div>
-            <div class="w-px h-10" style="background:rgba(255,255,255,.1)"></div>
+            <div class="w-px h-10 bg-ink-200"></div>
             <div><div class="num text-3xl font-bold hero-stat-num">1-10 <span class="text-lg">ปี</span></div><div class="text-ink-400 text-xs mt-1 tracking-wide">รับประกันผลงาน</div></div>
-            <div class="w-px h-10" style="background:rgba(255,255,255,.1)"></div>
+            <div class="w-px h-10 bg-ink-200"></div>
             <div><div class="num text-3xl font-bold hero-stat-num">100%</div><div class="text-ink-400 text-xs mt-1 tracking-wide">ติดตามออนไลน์</div></div>
           </div>
         </div>
-        <div class="relative fade-in" id="heroImgWrap" style="animation-delay:.15s">
-          <div class="hero-glass-frame tilt" id="heroImgCard">
-            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1200&auto=format&fit=crop" class="w-full h-80 sm:h-96 object-cover" alt="แผงโซลาร์เซลล์บนหลังคา">
-            <div class="hero-glass-frame-sheen"></div>
+
+        <div class="relative fade-in" style="animation-delay:.15s">
+          <!-- แสงเรืองรองหลังกรอบรูป ให้มีมิติลอยขึ้นจากพื้น -->
+          <div class="hero-card-glow"></div>
+          <!-- เข็มทิศประดับมุมบนซ้าย ลอยห่างจากรูป ไม่ชนอะไร -->
+          <div class="hero-deco-chip">
+            <span class="text-lg">☀️</span>
           </div>
-          <div class="hero-float-badge fade-in" style="animation-delay:.5s">
-            <div class="hero-float-badge-icon">✓</div>
-            <div class="text-sm"><div class="font-semibold text-ink-900">ส่งมอบงานแล้ว</div><div class="text-ink-400 text-xs">รับประกันเริ่มทันที</div></div>
+
+          <div class="hero-card-frame tilt">
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1200&auto=format&fit=crop" class="w-full h-[420px] object-cover" alt="แผงโซลาร์เซลล์บนหลังคา">
+            <div class="hero-fullbleed-tint"></div>
+            <div class="hero-glass-frame-sheen"></div>
+            <div class="hero-overlay-strip">
+              <div class="hero-overlay-item">
+                <span class="hero-overlay-icon">✓</span>
+                <div><div class="font-semibold text-white text-sm">ส่งมอบงานแล้ว</div><div class="text-white/55 text-xs">รับประกันเริ่มทันที</div></div>
+              </div>
+              <div class="w-px h-9 bg-white/15"></div>
+              <div class="hero-overlay-item">
+                <span class="hero-overlay-icon">👷</span>
+                <div><div class="font-semibold text-white text-sm">ควบคุมโดยวิศวกร</div><div class="text-white/55 text-xs">ทุกขั้นตอนการติดตั้ง</div></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2850,8 +2915,8 @@ document.addEventListener("click", (e)=>{
 (function spawnParticles(){
   const wrap = document.getElementById("heroParticles");
   if(!wrap) return;
-  const colors = ["#fbbf24","#34d399","#60a5fa","#f59e0b"];
-  for(let i=0;i<16;i++){
+  const colors = ["#fbbf24","#34d399","#60a5fa","#f59e0b","#e0823e"];
+  for(let i=0;i<26;i++){
     const p = document.createElement("div");
     p.className = "particle";
     const size = 3 + Math.random()*5;
@@ -2859,7 +2924,7 @@ document.addEventListener("click", (e)=>{
     p.style.left = (Math.random()*100)+"%";
     p.style.bottom = "-10px";
     p.style.background = colors[i % colors.length];
-    p.style.opacity = .5;
+    p.style.opacity = .55;
     p.style.setProperty("--drift", (Math.random()*60-30)+"px");
     p.style.animationDuration = (9 + Math.random()*8)+"s";
     p.style.animationDelay = (Math.random()*10)+"s";
@@ -2882,22 +2947,6 @@ document.addEventListener("click", (e)=>{
     s.style.animationDelay = (Math.random()*4)+"s";
     wrap.appendChild(s);
   }
-})();
-
-/* ===================== HERO IMAGE PARALLAX TILT ===================== */
-(function heroTilt(){
-  const wrap = document.getElementById("heroImgWrap");
-  const card = document.getElementById("heroImgCard");
-  if(!wrap || !card) return;
-  if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  if(window.matchMedia && window.matchMedia("(pointer: coarse)").matches) return; // skip on touch
-  wrap.addEventListener("mousemove", (e)=>{
-    const r = wrap.getBoundingClientRect();
-    const px = (e.clientX - r.left)/r.width - .5;
-    const py = (e.clientY - r.top)/r.height - .5;
-    card.style.transform = `rotateY(${px*8}deg) rotateX(${-py*8}deg) translateZ(0)`;
-  });
-  wrap.addEventListener("mouseleave", ()=>{ card.style.transform = "rotateY(0) rotateX(0)"; });
 })();
 
 /* ===================== CONFETTI ===================== */
